@@ -22,4 +22,9 @@ public class ConsultCourseUseCase {
 
         return listUsers;
     }
+
+    public Course executeTwo(Long id) {
+        Course course = courseRepository.findCourseById(id);
+        return course;
+    }
 }

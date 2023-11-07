@@ -14,6 +14,6 @@ public class DeleteCourseUseCase {
         if(!courseRepository.existUserL(id)){
             throw new RuntimeException("Curso no se encuentra");
         }
-        this.courseRepository.deleteCourseByIdCourse(id);
+        this.courseRepository.deleteById (id);
     }
 }

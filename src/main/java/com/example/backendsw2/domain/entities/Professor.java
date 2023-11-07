@@ -41,7 +41,6 @@ public class Professor {
     @Column(name = "courseName", length = 50, nullable = false)
     private String courseName;
 
-
     public Professor(){
 
     }
@@ -77,6 +76,7 @@ public class Professor {
     public String getProfessorSpecialization() {
         return professorSpecialization;
     }
+
 
     public String getProfessorEstatus() {
         return professorEstatus;

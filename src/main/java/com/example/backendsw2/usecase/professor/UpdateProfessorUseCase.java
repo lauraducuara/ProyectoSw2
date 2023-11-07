@@ -42,6 +42,7 @@ public class UpdateProfessorUseCase {
         existingProfessor.setProfessorAddres(dto.getProfessorAddres());
         existingProfessor.setProfessorSpecialization(dto.getProfessorSpecialization());
         existingProfessor.setProfessorEstatus(dto.getProfessorEstatus());
+        existingProfessor.setCourseName (dto.getCourseName ());
         // Guardar los cambios en el repositorio
         professorRepository.updateProfessor(existingProfessor);
     }

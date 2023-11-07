@@ -2,6 +2,7 @@ package com.example.backendsw2.app.rest;
 
 import com.example.backendsw2.adapter.repository.CourseRepository;
 import com.example.backendsw2.domain.dto.CourseDto;
+import com.example.backendsw2.domain.entities.Course;
 import com.example.backendsw2.usecase.course.ConsultCourseUseCase;
 import com.example.backendsw2.usecase.course.CreateCourseUseCase;
 import com.example.backendsw2.usecase.course.DeleteCourseUseCase;
@@ -42,10 +43,16 @@ public class CourseController {
         // return this.consultCourseUseCase.execute();
         return courseList;
     }
-    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
-    public void updateUser(@RequestBody CourseDto courseDto) {
+
+    @GetMapping(value = "/search/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Course findId(@PathVariable(value="id") Long idCourse) {
+        Course c = consultCourseUseCase.executeTwo (idCourse);
+        return c;
+    }
+    @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
+    public void updateUser(@PathVariable(value="id") Long idCourse, @RequestBody CourseDto courseDto) {
         //se neceista el caso de uso
-        this.updateCourseUseCase.execute(courseDto);
+        this.updateCourseUseCase.execute(idCourse, courseDto);
     }
 
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

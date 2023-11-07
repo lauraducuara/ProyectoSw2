@@ -1,6 +1,7 @@
 package com.example.backendsw2.app.rest;
 
 import com.example.backendsw2.adapter.repository.ProfessorRepository;
+import com.example.backendsw2.domain.dto.ProfessorBasicDto;
 import com.example.backendsw2.domain.dto.ProfessorDto;
 import com.example.backendsw2.usecase.professor.ConsultProfessorUseCase;
 import com.example.backendsw2.usecase.professor.CreateProfessorUseCase;
@@ -14,6 +15,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/professor")
+@CrossOrigin(origins = "*") // Indica el origen permitido
+
 public class ProfessorController {
     @Autowired
     private ProfessorRepository professorRepository;
@@ -37,6 +40,11 @@ public class ProfessorController {
     @GetMapping(value = "/show", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ProfessorDto> showUser() {
         return this.consultProfessorUseCase.execute();
+    }
+
+    @GetMapping(value = "/show/professorInf", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ProfessorBasicDto> showProfessorInfo() {
+        return this.consultProfessorUseCase.executeTwo ();
     }
 
     @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )

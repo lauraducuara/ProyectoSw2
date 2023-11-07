@@ -3,7 +3,6 @@ package com.example.backendsw2.app.config;
 
 import com.example.backendsw2.adapter.cipher.ChiperInfoImpl;
 import com.example.backendsw2.adapter.repository.CourseRepository;
-import com.example.backendsw2.adapter.repository.UserRepository;
 
 import com.example.backendsw2.adapter.repository.ProfessorRepository;
 import com.example.backendsw2.adapter.repository.SubjectRepository;
@@ -18,9 +17,6 @@ import com.example.backendsw2.usecase.professor.DeleteProfessorUseCase;
 import com.example.backendsw2.usecase.professor.UpdateProfessorUseCase;
 import com.example.backendsw2.usecase.subject.ConsultSubjectUseCase;
 import com.example.backendsw2.usecase.subject.CreateSubjectUseCase;
-import com.example.backendsw2.usecase.user.ConsultUserUseCase;
-import com.example.backendsw2.usecase.user.CreateUserUseCase;
-import com.example.backendsw2.usecase.user.UpdateUserUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,9 +33,6 @@ public class AppConfig {
 
     @Autowired
     private ProfessorRepository professorRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Bean
     public CreateCourseUseCase createCourseUseCase(){
@@ -84,16 +77,5 @@ public class AppConfig {
     public DeleteProfessorUseCase deleteProfessorUseCase(){return new DeleteProfessorUseCase(professorRepository);}
 
 
-    @Bean
-    public CreateUserUseCase createUserUseCase(){
-        return new CreateUserUseCase(userRepository, cipherInfo());
-    }
-    @Bean
-    public ConsultUserUseCase consultUserUseCase(){
-        return new ConsultUserUseCase(userRepository);
-    }
-    @Bean
-    public UpdateUserUseCase updateUserUseCase(){
-        return new UpdateUserUseCase(userRepository);
-    }
+
 }

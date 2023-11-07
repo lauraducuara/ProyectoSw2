@@ -14,9 +14,9 @@ public class UpdateCourseUseCase {
         this.courseRepository = userRepository;
     }
 
-    public void execute(CourseDto dto) {
+    public void execute(Long idCourse, CourseDto dto) {
         // Verificar que el usuario exista
-        Course existingCourse = courseRepository.findCourseById(dto.getIdCourse());
+        Course existingCourse = courseRepository.findCourseById(idCourse);
         if (existingCourse == null) {
             throw new ClassException ("Usuario no encontrado");
         }
@@ -32,6 +32,7 @@ public class UpdateCourseUseCase {
         }
 
         // Actualizar los campos del usuario existente
+       existingCourse.setIdCourse (idCourse);
         existingCourse.setCourseName(dto.getCourseName());
         existingCourse.setCourseDirector(dto.getCedulaCourseDirector());
         existingCourse.setCourseDescription(dto.getCourseDescription());
@@ -39,6 +40,6 @@ public class UpdateCourseUseCase {
         existingCourse.setCourseEstatus(dto.getCourseEstatus());
 
         // Guardar los cambios en el repositorio
-        courseRepository.updateCourse(existingCourse);
+        courseRepository.save (existingCourse);
     }
 }

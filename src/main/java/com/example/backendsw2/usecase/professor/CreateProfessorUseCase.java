@@ -37,9 +37,7 @@ public class CreateProfessorUseCase {
         if (course != null) {
             // convertir dto a entidad
             Professor professor = ProfessorMapper.INSTANCE.toEntity(dto);
-            professor.setProfessorPassword(this.cipherInfo.encrypt(dto.getProfessorPassword()));
 
-            // Asignar el curso al profesor
             professor.setCourseName((course.getCourseName()));
 
             // guardar usuario

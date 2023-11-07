@@ -2,10 +2,12 @@ package com.example.backendsw2.usecase.professor;
 
 
 import com.example.backendsw2.adapter.repository.ProfessorRepository;
+import com.example.backendsw2.domain.dto.ProfessorBasicDto;
 import com.example.backendsw2.domain.dto.ProfessorDto;
 import com.example.backendsw2.domain.entities.Professor;
 import com.example.backendsw2.domain.mapper.ProfessorMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultProfessorUseCase {
@@ -19,8 +21,11 @@ public class ConsultProfessorUseCase {
     public List<ProfessorDto> execute() {
         List<Professor> professor = professorRepository.findAll();
         List<ProfessorDto> listProfessor = ProfessorMapper.INSTANCE.toDto(professor);
-
-
         return listProfessor;
     }
+
+    public List<ProfessorBasicDto> executeTwo() {
+        return professorRepository.searchProfessor();
+    }
+
 }

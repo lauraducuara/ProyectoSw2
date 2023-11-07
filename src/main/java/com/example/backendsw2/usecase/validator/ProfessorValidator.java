@@ -24,8 +24,10 @@ public class ProfessorValidator {
         if(dto.getProfessorSpecialization() == null || dto.getProfessorSpecialization().trim().isEmpty())
             throw new ClassException("La especializacion del docente no puede ser nulo o vacio");
         if(dto.getProfessorSalary() == 0)
-            throw new ClassException("La asignatura debe tener un porcentaje");
+            throw new ClassException("El salario no puede ser nulo ni vacio");
         if(dto.getProfessorEstatus() == null || dto.getProfessorEstatus().trim().isEmpty())
             throw new ClassException("El estado del docente no puede ser nulo o vacio");
-    }
+        if(dto.getCourseName () == null || dto.getCourseName().trim().isEmpty())
+            throw new ClassException("El curso del docente no puede ser nulo o vacio");
+       }
 }

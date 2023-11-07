@@ -18,6 +18,26 @@ public class ProfessorDto {
     private String professorEstatus;
     private String courseName;
 
+
+    public ProfessorDto (Long professorCedula, String professorName, String professorLastName) {
+        this.professorCedula = professorCedula;
+        this.professorName = professorName;
+        this.professorLastName = professorLastName;
+    }
+
+    public ProfessorDto (Long professorCedula, String professorNameUser, String professorPassword, String professorName, String professorLastName, double professorSalary, String professorAddres, String professorSpecialization, String professorEstatus, String courseName) {
+        this.professorCedula = professorCedula;
+        this.professorNameUser = professorNameUser;
+        this.professorPassword = professorPassword;
+        this.professorName = professorName;
+        this.professorLastName = professorLastName;
+        this.professorSalary = professorSalary;
+        this.professorAddres = professorAddres;
+        this.professorSpecialization = professorSpecialization;
+        this.professorEstatus = professorEstatus;
+        this.courseName = courseName;
+    }
+
     public ProfessorDto(){
 
     }
@@ -30,6 +50,9 @@ public class ProfessorDto {
     public String getProfessorNameUser() {
         return professorNameUser;
     }
+
+
+
 
     public String getProfessorPassword() {
         return professorPassword;
@@ -67,9 +90,7 @@ public class ProfessorDto {
         this.courseName = courseName;
     }
 
-
     // Métodos SET
-
 
     public void setProfessorCedula(Long professorCedula) {
         this.professorCedula = professorCedula;
